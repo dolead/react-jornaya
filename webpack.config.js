@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
     mode: 'production',
@@ -6,16 +6,20 @@ module.exports = {
     output: {
         path: path.resolve('lib'),
         filename: 'JornayaComponent.js',
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'commonjs2',
+    },
+    externals: {
+        react: 'react',
+        'react-dom': 'react-dom',
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
-                use: 'babel-loader'
-            }
-        ]
+                use: 'babel-loader',
+            },
+        ],
     },
     optimization: {
         minimize: true,
